@@ -64,7 +64,7 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <div className="card border-info mt-3">
+      <div className="card border-default mt-3">
         <div className="card-header">
           <h5 class="card-title">Two Factor Authenticator</h5>
         </div>
