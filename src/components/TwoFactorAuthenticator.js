@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import totp from "totp-generator";
 
-const rows = 7;
+import { useSettingConfig } from "../hooks";
+
 const sample = "BK5V TVQ7 D2RB BK5V TVQ7 D2RB BK5V TVQ7";
 
 const TwoFactorAuthenticator = () => {
   const [key, setKey] = useState("");
   const [code, setCode] = useState("");
+  const [{ tfaRows: rows }] = useSettingConfig();
 
   useEffect(() => {
     if (!key) {
@@ -24,7 +26,7 @@ const TwoFactorAuthenticator = () => {
       return `${secret}|${totp(secret)}`;
     } catch (error) {
       console.log(error);
-      return '';
+      return "";
     }
   };
 
@@ -45,7 +47,7 @@ const TwoFactorAuthenticator = () => {
           }
         }
       }
-      setCode(keys.join('\n'));
+      setCode(keys.join("\n"));
     } catch (error) {
       console.log(error);
       setCode("");
@@ -128,6 +130,6 @@ const TwoFactorAuthenticator = () => {
       </div>
     </div>
   );
-}
+};
 
 export default TwoFactorAuthenticator;

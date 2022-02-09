@@ -8,10 +8,16 @@ const TopNavBar = ({ title }) => {
                 <Navbar.Brand href="/">{title}</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                    <Nav>
                         <Nav.Link href="/2fa">2FA</Nav.Link>
                     </Nav>
+                    <Nav>
+                        <Nav.Link href="/space">Space</Nav.Link>
+                    </Nav>
                 </Navbar.Collapse>
+                <Nav className="justify-content-end">
+                    <Nav.Link href="/settings">Settings</Nav.Link>
+                </Nav>
             </Container>
       </Navbar>
     );
