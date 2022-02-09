@@ -3,7 +3,6 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 
 import { setting } from "../storage";
-import { useSettingConfig } from "../hooks";
 import MyCard from "../components/MyCard";
 
 const Settings = () => {
