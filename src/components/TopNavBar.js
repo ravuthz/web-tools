@@ -14,10 +14,10 @@ const TopNavBar = ({ title }) => {
                     <Nav>
                         <Nav.Link href="/space">Space</Nav.Link>
                     </Nav>
+                    <Nav className="justify-content-end">
+                        <Nav.Link href="/settings">Settings</Nav.Link>
+                    </Nav>
                 </Navbar.Collapse>
-                <Nav className="justify-content-end">
-                    <Nav.Link href="/settings">Settings</Nav.Link>
-                </Nav>
             </Container>
       </Navbar>
     );

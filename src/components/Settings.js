@@ -3,17 +3,12 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 
 import { setting } from "../storage";
+import { settingInitialValues } from "../hooks";
 import MyCard from "../components/MyCard";
 
 const Settings = () => {
   const { handleSubmit, handleChange, values, setValues } = useFormik({
-    // initialValues: config,
-    initialValues: {
-      tfaRows: 7,
-      wsrRows: 7,
-      replace1: "\\",
-      replace2: '<span style="color: red">*</span>',
-    },
+    initialValues: settingInitialValues,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },

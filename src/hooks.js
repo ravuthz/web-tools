@@ -2,12 +2,23 @@ import { useEffect, useState, useCallback } from "react";
 
 import { setting } from "./storage";
 
+const settingInitialValues = {
+  tfaRows: 7,
+  wsrRows: 7,
+  replace1: "\\s",
+  replace2: '<span style="color: red">*</span>',
+}
+
 const useSettingConfig = () => {
   const [config, setConfig] = useState({});
 
   const loadSetting = useCallback(async () => {
     try {
-      const data = await setting.getItem("config");
+      let data = await setting.getItem("config");
+      if (!data) {
+        setting.setItem('config', settingInitialValues);
+        data = settingInitialValues;
+      }
       setConfig(data);
     } catch (error) {
       console.log(error);
@@ -30,4 +41,4 @@ const useSettingConfig = () => {
   return [config, updateSettingConfig];
 };
 
-export { useSettingConfig };
+export { useSettingConfig, settingInitialValues };

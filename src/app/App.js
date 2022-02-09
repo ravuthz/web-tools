@@ -17,7 +17,7 @@ import "./App.css";
 function App() {
   return (
     <Container fluid>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <TopNavBar title="Web Tools"/>
         <Routes>
           <Route path="/2fa" element={<TwoFactorAuthenticator />}></Route>
