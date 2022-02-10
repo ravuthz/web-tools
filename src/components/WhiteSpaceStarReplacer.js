@@ -2,17 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 
-import { useSettingConfig } from "../hooks";
-import MyDiv from "../components/MyDiv";
 import MyCard from "../components/MyCard";
 
 const dot = "🔴";
 
 const WhiteSpaceStarReplacer = () => {
   const element1 = useRef(null);
-  const element2 = useRef(null);
-
-  const [{ wsrRows: rows, replace1, replace2 }] = useSettingConfig();
 
   const { handleSubmit, handleChange, values, setValues } = useFormik({
     initialValues: { text1: "", text2: "" },
@@ -27,10 +22,16 @@ const WhiteSpaceStarReplacer = () => {
     const space = new RegExp("\\s", "gmu");
     if (space.test(text)) {
       const text1 = text
-        .replace(/\r/g, dot)
-        .replace(/\n/g, dot)
-        .replace(/\f/g, dot)
-        .replace(/\v/g, dot);
+        .replaceAll(/\r/g, dot)
+        .replaceAll(/\n/g, dot)
+        .replaceAll(/\f/g, dot)
+        .replaceAll(/\v/g, dot)
+        // .replace(/\u0020/gu, '*')
+        // .replace(/\u00a0/gu, '+')
+        // .replace(/\u2009/gu, '-')
+        // .replace(/\u200a/gu, 'x')
+        .replaceAll(/\u200b/gu, dot)
+        ;
       setValues((old) => ({ ...old, text1 }));
     } else {
       setValues((old) => ({ ...old, text }));
