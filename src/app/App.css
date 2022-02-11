@@ -1,5 +1,12 @@
 @import "bootstrap";
 
+/* @import url('https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700&display=swap');
+
+body {
+    font-weight: 400;
+    font-family: 'Battambang', cursive;
+} */
+
 .border-default {
     border: 1px solid black;
 }
@@ -40,3 +47,9 @@ border: 1px solid #ced4da;
 appearance: none;
 border-radius: 0.25rem;
 transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
+
+
+.red-dot {
+    /* font-size: 7px !important; */
+    color: red
+}
