@@ -14,6 +14,7 @@ const MyDiv = ({ rows = 15, value, onChange, disabled, ...props }) => {
   }
 
   const handlePaste = (event) => {
+    event.preventDefault();
     const html = (event.clipboardData || window.clipboardData).getData('text');
     // const text = e.clipboardData.getData('text/plain');
     // const html = e.clipboardData.getData('text/html');

@@ -1,7 +1,6 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useFormik } from "formik";
-import ReactQuill from "react-quill";
 import DOMPurify from "dompurify";
 
 import "react-quill/dist/quill.snow.css";
@@ -9,13 +8,11 @@ import "react-quill/dist/quill.snow.css";
 import MyDiv from "../components/MyDiv";
 import MyCard from "../components/MyCard";
 
-// const dot = "🔴";
-// const dot = '\u26AB';
 const dot = `•`;
 const dotSpan = `<span class="red-dot">•</span>`;
 
-const bigDot = `🔴`;
-const bigDotSpan = `<span class="red-dot">🔴</span>`;
+// const bigDot = `🔴`;
+// const bigDotSpan = `<span class="red-dot">🔴</span>`;
 
 const FORBID_TAGS = [
   "a",
@@ -40,7 +37,6 @@ const FORBID_TAGS = [
 ];
 
 const WhiteSpaceStarReplacer = () => {
-  const element1 = useRef(null);
 
   const { handleSubmit, handleChange, values, setValues } = useFormik({
     initialValues: { text1: "", text2: "", html: "" },
@@ -74,7 +70,10 @@ const WhiteSpaceStarReplacer = () => {
     const html = DOMPurify.sanitize(text, { FORBID_TAGS })
       .replaceAll(/\u200b/gu, "•")
       .replaceAll(dot, dotSpan);
-    setValues((old) => ({ ...old, html }));
+    setValues((old) => {
+      console.log({ old, html });
+      return { ...old, html};
+    });
   };
 
   // const onText2Change = (text, delta, source, editor) => {
@@ -121,16 +120,11 @@ const WhiteSpaceStarReplacer = () => {
   // };
 
   const onCopyText = async () => {
-    // const {text1} = values;
-    // const text1 = values.text1.replaceAll(dot, "");
-    // setValues((old) => ({ ...old, text1 }));
-
     const { html } = values;
     let text1 = DOMPurify.sanitize(html, { FORBID_TAGS })
       .replaceAll(new RegExp(dotSpan, "gu"), "")
       .replaceAll(dot, "");
     setValues((old) => ({ ...old, html: text1 }));
-
     if ("clipboard" in navigator) {
       return await navigator.clipboard.writeText(text1);
     } else {

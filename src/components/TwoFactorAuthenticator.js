@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import totp from "totp-generator";
 
-import { useSettingConfig } from "../hooks";
-
 const sample = "BK5V TVQ7 D2RB BK5V TVQ7 D2RB BK5V TVQ7";
+
+const rows = 7;
 
 const TwoFactorAuthenticator = () => {
   const [key, setKey] = useState("");
   const [code, setCode] = useState("");
-  const [{ tfaRows: rows }] = useSettingConfig();
 
   useEffect(() => {
     if (!key) {

@@ -1,11 +1,11 @@
 @import "bootstrap";
 
-/* @import url('https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700&display=swap');
 
-body {
+div[contenteditable] {
     font-weight: 400;
     font-family: 'Battambang', cursive;
-} */
+}
 
 .border-default {
     border: 1px solid black;
