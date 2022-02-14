@@ -38,7 +38,8 @@ const FORBID_TAGS = [
 
 const WhiteSpaceStarReplacer = () => {
 
-  const { handleSubmit, handleChange, values, setValues } = useFormik({
+  // handleChange,
+  const { handleSubmit, values, setValues } = useFormik({
     initialValues: { text1: "", text2: "", html: "" },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -123,6 +124,10 @@ const WhiteSpaceStarReplacer = () => {
     const { html } = values;
     let text1 = DOMPurify.sanitize(html, { FORBID_TAGS })
       .replaceAll(new RegExp(dotSpan, "gu"), "")
+      .replaceAll(/\r/g, dot)
+      .replaceAll(/\n/g, dot)
+      .replaceAll(/\f/g, dot)
+      .replaceAll(/\v/g, dot)
       .replaceAll(dot, "");
     setValues((old) => ({ ...old, html: text1 }));
     if ("clipboard" in navigator) {
