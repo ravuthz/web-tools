@@ -10,6 +10,7 @@ import { Container } from 'react-bootstrap';
 import TopNavBar from '../components/TopNavBar';
 import TwoFactorAuthenticator from '../components/TwoFactorAuthenticator';
 import WhiteSpaceStarReplacer from '../components/WhiteSpaceStarReplacer';
+import FaceBookIdFinder from '../components/FaceBookIdFinder';
 
 import "./App.css";
 
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/2fa" element={<TwoFactorAuthenticator />}></Route>
           <Route path="/space" element={<WhiteSpaceStarReplacer />}></Route>
+          <Route path="/fbid" element={<FaceBookIdFinder />}></Route>
           <Route path="/" element={<h1>Welcome to Web Tools</h1>}></Route>
         </Routes>
       </Router>

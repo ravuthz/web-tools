@@ -12,6 +12,9 @@ const TopNavBar = ({ title }) => {
                         <Nav.Link href="/2fa">2FA</Nav.Link>
                     </Nav>
                     <Nav>
+                        <Nav.Link href="/fbid">FB-ID</Nav.Link>
+                    </Nav>
+                    <Nav>
                         <Nav.Link href="/space">Space</Nav.Link>
                     </Nav>
                     {/* <Nav className="justify-content-end">
